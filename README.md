@@ -1,4 +1,4 @@
-# Coinspot-scrapper
+# **Coinspot-scrapper**
 
 ### Scrapper to get the sell price of the following coins from coinspot.com.au
 * BTC 
