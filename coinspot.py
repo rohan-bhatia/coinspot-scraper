@@ -54,9 +54,12 @@ print("---------------------")
 for websiteURL in getCoinSpotWebsiteURLS():
     req = requests.get(websiteURL)
     soup = BeautifulSoup(req.content, "lxml")
-    priceStringFull = soup.select('h1.price-title')[0].text.strip()
-    priceString = priceStringFull.split("$")
-    print(priceString[0] + priceString[1])
+    if(soup.text != "Not Found"):
+        priceStringFull = soup.select('h1.price-title')[0].text.strip()
+        priceString = priceStringFull.split("$")
+        print(priceString[0] + priceString[1])
+    else:
+        print(soup.text.upper() + " - " + websiteURL)
 
 print("")
 print("")	
