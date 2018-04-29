@@ -1,6 +1,6 @@
 # **Coinspot-scrapper**
-A Pythin based scrapper to get the price of cryptocurriencies listed on [coinspot.com.au](https://www.coinspot.com.au?affiliate=9NU13)
-
+A Python based scrapper to get the price of cryptocurriencies listed on [coinspot.com.au](https://www.coinspot.com.au?affiliate=9NU13)
+<br><br><br><br>
 
 
 > ## **v0.1.0 Release**
