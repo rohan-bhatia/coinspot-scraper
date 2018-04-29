@@ -1,2 +1,38 @@
 # coinspot-scrapper
-Python scrapper to get buy and sell price from coinspot.com.au
+
+### Scrapper to get the sell price of the following coins from coinspot.com.au
+* BTC 
+* ETH 
+* XRP 
+* BCC 
+* EOS 
+* LTC 
+* STR 
+* ADA 
+* MIOTA 
+* NEO 
+* TRX 
+* XMR 
+* DASH 
+* XEM 
+* USDT 
+* ETC 
+* VEN 
+* OMG 
+* QTUM 
+* ICX 
+* BTG 
+* LSK 
+* STEEM 
+* ZEC 
+* BCN 
+* SC 
+* XRB 
+* WAN 
+* PPT 
+* AE 
+* XVG 
+* XRB 
+* DOGE 
+* PIVX 
+* CAN
