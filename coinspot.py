@@ -6,6 +6,21 @@ Created on 27 Apr. 2018
 
 import requests
 from bs4 import BeautifulSoup
+import configparser
+import time
+
+print("---------------------")
+print("   Coinspot-scraper  ")
+print("---------------------")
+print("")
+print("Processing....")
+print("")
+
+my_config_parser = configparser.SafeConfigParser()
+my_config_parser.read('config.ini')
+typeOfValue = my_config_parser.get('Coinspot', 'TypeOfValue')
+cryproList = my_config_parser.get('Coinspot', 'CryproList')
+displayValue = my_config_parser.get('Coinspot', 'DisplayValue')
 
 #List of URLs to scrap
 def getCoinSpotWebsiteURLS():
@@ -48,19 +63,42 @@ def getCoinSpotWebsiteURLS():
     websiteURLList.append('https://www.coinspot.com.au/sell/CAN')
     return websiteURLList
 
-print("---------------------")
-print("Format: Name = Price")
-print("---------------------")
+displayFormatOne = []
+displayFormatOne.append("---------------------")
+displayFormatOne.append("Format: Name = Price")
+displayFormatOne.append("---------------------")
+
+displayFormatTwo = []
+displayFormatTwo.append("---------------------")
+displayFormatTwo.append("  Format: Price Only ")
+displayFormatTwo.append("---------------------")
+
 for websiteURL in getCoinSpotWebsiteURLS():
     req = requests.get(websiteURL)
     soup = BeautifulSoup(req.content, "lxml")
     if(soup.text != "Not Found"):
         priceStringFull = soup.select('h1.price-title')[0].text.strip()
         priceString = priceStringFull.split("$")
-        print(priceString[0] + priceString[1])
+        displayFormatOne.append(priceString[0] + priceString[1])
+        displayFormatTwo.append(priceString[2])
     else:
-        print(soup.text.upper() + " - " + websiteURL)
+        displayFormatOne.append(soup.text.upper() + " - " + websiteURL)
+        displayFormatTwo.append(soup.text.upper() + " - " + websiteURL)
 
-print("")
-print("")	
+#Function to print the values based on config file
+def printPrices(displayValue):
+    if(displayValue == "1"):
+        for displayFormatValue in displayFormatOne:
+            print(displayFormatValue)
+    elif(displayValue == "2"):
+        for displayFormatValue in displayFormatTwo:
+            print(displayFormatValue)
+    else:
+        for displayFormatValue in displayFormatOne:
+            print(displayFormatValue)
+        for displayFormatValue in displayFormatTwo:
+            print(displayFormatValue)
+
+printPrices(displayValue)
+print("")    
 input("Press enter to exit...")
